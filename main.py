@@ -60,11 +60,39 @@ class LinkedList:
             print(current.data)
             current = current.next
 
+
+
+def insert_line_at_five(file_path, new_line):
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
+
+    # Stelle sicher, dass die Liste lang genug ist. Falls nicht, füge leere Zeilen hinzu.
+    while len(lines) < 4:
+        lines.append('\n')
+
+    # Füge die neue Zeile bei Index 4 ein, was der fünften Zeile entspricht.
+    lines.insert(4, new_line + '\n')
+
+    with open(file_path, 'w') as file:
+        file.writelines(lines)
+
+
+## Schreibe binäre Daten in eine Datei
+#st = "test"
+#st.encode()
+#file = open('beispiel.dat', 'wb')
+
+#bytes_to_write = bytes([1,2,3,4,5,6,7,8,9])  # Eine Liste von Bytes
+
+#file.write(bytes_to_write)
+#
 def main():
     l = LinkedList()
     f = open("data.txt", "r")
     for x in f:
         l.append(x.strip())
+
+
     while(True):
         print("Dateinhalt:  ")
         l.print_list()
@@ -83,8 +111,4 @@ def main():
         elif(i == "c"):
             text = input("Text: ")
             l.append(text)
-
-
-
-
 main()
